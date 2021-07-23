@@ -40,6 +40,14 @@ class App extends React.Component {
         this.setState({ loading_ifc: true })
         await this.viewer.loadIfc(files[0], true);
         this.setState({ loaded: true, loading_ifc: false })
+      try {
+        // v1.0.14
+        console.log('spatial structure: ', this.viewer.ifcManager.loader.getSpatialStructure());
+        // v1.0.20
+        //console.log('spatial structure: ', this.viewer.IFC.loader.ifcManager.getSpatialStructure());
+      } catch (e) {
+        console.error(e);
+      }
     };
 
     handleToggleClipping = () => {
